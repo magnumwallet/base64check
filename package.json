@@ -1,27 +1,24 @@
 {
-  "name": "bs58check",
+  "name": "base64check",
   "version": "2.1.2",
-  "description": "A straightforward implementation of base58-check encoding",
+  "description": "A straightforward implementation of base64-check encoding",
   "keywords": [
     "base",
-    "base58",
-    "base58check",
-    "bitcoin",
-    "bs58",
+    "base64",
+    "base64check",
     "check",
     "checksum",
     "decode",
     "decoding",
     "encode",
-    "encoding",
-    "litecoin"
+    "encoding"
   ],
-  "homepage": "https://github.com/bitcoinjs/bs58check",
+  "homepage": "https://github.com/magnumwallet/base64check",
   "bugs": {
-    "url": "https://github.com/bitcoinjs/bs58check/issues"
+    "url": "https://github.com/magnumwallet/base64check/issues"
   },
   "license": "MIT",
-  "author": "Daniel Cousens",
+  "author": "Smirnov Dmitry <smdmitry@gmail.com>",
   "files": [
     "index.js",
     "base.js"
@@ -29,7 +26,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bitcoinjs/bs58check.git"
+    "url": "https://github.com/magnumwallet/base64check.git"
   },
   "scripts": {
     "coverage-report": "nyc report --reporter=lcov",
@@ -39,7 +36,6 @@
     "unit": "tape test/*.js"
   },
   "dependencies": {
-    "bs58": "^4.0.0",
     "create-hash": "^1.1.0",
     "safe-buffer": "^5.1.2"
   },

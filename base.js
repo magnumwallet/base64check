@@ -1,17 +1,16 @@
 'use strict'
 
-var base58 = require('bs58')
 var Buffer = require('safe-buffer').Buffer
 
 module.exports = function (checksumFn) {
-  // Encode a buffer as a base58-check encoded string
+  // Encode a buffer as a base64-check encoded string
   function encode (payload) {
     var checksum = checksumFn(payload)
 
-    return base58.encode(Buffer.concat([
+    return Buffer.concat([
       payload,
       checksum
-    ], payload.length + 4))
+    ], payload.length + 4).toString('base64');
   }
 
   function decodeRaw (buffer) {
@@ -27,16 +26,16 @@ module.exports = function (checksumFn) {
     return payload
   }
 
-  // Decode a base58-check encoded string to a buffer, no result if checksum is wrong
+  // Decode a base64-check encoded string to a buffer, no result if checksum is wrong
   function decodeUnsafe (string) {
-    var buffer = base58.decodeUnsafe(string)
+    var buffer = new Buffer(string, 'base64')
     if (!buffer) return
 
     return decodeRaw(buffer)
   }
 
   function decode (string) {
-    var buffer = base58.decode(string)
+    var buffer = new Buffer(string, 'base64')
     var payload = decodeRaw(buffer, checksumFn)
     if (!payload) throw new Error('Invalid checksum')
     return payload
